@@ -45,7 +45,19 @@ public class LibraryTest {
 
     @Test
     public void testUpdateItem() {
-//TODO: add functionality to update items
+        Item book1 = new Book("Andy McNab", "Penguin", 368, "2423");
+        Item book2 = new Book("Andy McNob", "Penguin", 368, "2424");
+        lib.addItem(book1);
+        lib.updateItem(book1, book2);
+        boolean bool = false;
+        for (Item item : lib.getItems()) {
+            if (item.itemID.equals("2424")) {
+                bool = true;
+                break;
+            }
+        }
+        assertEquals("The old item is not being removed", 1, lib.getItems().size());
+        assertTrue("The item's value is not being updated", bool);
     }
 
     @Test
@@ -79,9 +91,7 @@ public class LibraryTest {
 
     @Test
     public void testDeleteMember() {
-        lib.registerMember(new Person("John"));
-        lib.registerMember(new Person("Dave"));
-        lib.registerMember(new Person("Alex"));
+        populateMembers();
         Person matchingObject = lib.getMembers()
                 .stream()
                 .filter(p -> p.getName().equals("John"))
@@ -92,8 +102,14 @@ public class LibraryTest {
     }
 
     @Test
-    public void testUpdateMember() {
-//TODO: add functionality to update members
+    public void testUpdateMemberName() {
+        populateMembers();
+        Person matchingPerson = lib.getMembers()
+                .stream()
+                .filter(person -> person.getName().equals("John"))
+                .findAny()
+                .orElse(null);
+        lib.updateMemberName(matchingPerson, "Jonathon");
     }
 
     private void populateLibrary() {
@@ -104,5 +120,9 @@ public class LibraryTest {
         lib.addItem(new Magazine());
     }
 
-
+    private void populateMembers() {
+        lib.registerMember(new Person("John"));
+        lib.registerMember(new Person("Dave"));
+        lib.registerMember(new Person("Alex"));
+    }
 }
