@@ -61,14 +61,6 @@ public class LibraryTest {
     }
 
     @Test
-    public void testFindByUUID() {
-        Book book = new Book();
-        lib.addItem(book);
-        String uuid = book.itemID;
-        assertEquals("The UUID search function is not working", book, lib.findByUUID(uuid));
-    }
-
-    @Test
     public void testCheckOut() {
         Item book = factory.newItem("BOOK", "Andy McNab", "Penguin", 368);
         lib.addItem(book);

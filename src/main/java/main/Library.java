@@ -23,19 +23,9 @@ public class Library {
         }
     }
 
-//    TODO: ideally this would update the item rather than creating and replacing it with a new object
     public void updateItem(Item itemToReplace, Item updatedItem) {
-        updatedItem.itemID = itemToReplace.itemID;
         this.items.remove(itemToReplace);
         this.items.add(updatedItem);
-    }
-
-    public Item findByUUID(String uuid) {
-        return getItems()
-                .stream()
-                .filter(i -> i.itemID.equals(uuid))
-                .findAny()
-                .orElse(null);
     }
 
     public List<Item> getItems() {
