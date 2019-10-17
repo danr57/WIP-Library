@@ -91,9 +91,7 @@ public class LibraryTest {
 
     @Test
     public void testDeleteMember() {
-        lib.registerMember(new Person("John"));
-        lib.registerMember(new Person("Dave"));
-        lib.registerMember(new Person("Alex"));
+        populateMembers();
         Person matchingObject = lib.getMembers()
                 .stream()
                 .filter(p -> p.getName().equals("John"))
@@ -105,7 +103,13 @@ public class LibraryTest {
 
     @Test
     public void testUpdateMember() {
-//TODO: add functionality to update members
+        populateMembers();
+        Person matchingPerson = lib.getMembers()
+                .stream()
+                .filter(person -> person.getName().equals("John"))
+                .findAny()
+                .orElse(null);
+        lib.updateMemberName(matchingPerson, "Jonathon");
     }
 
     private void populateLibrary() {
@@ -114,5 +118,11 @@ public class LibraryTest {
         }
         lib.addItem(new Magazine());
         lib.addItem(new Magazine());
+    }
+
+    private void populateMembers() {
+        lib.registerMember(new Person("John"));
+        lib.registerMember(new Person("Dave"));
+        lib.registerMember(new Person("Alex"));
     }
 }

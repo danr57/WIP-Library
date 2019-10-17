@@ -52,7 +52,15 @@ public class Library {
         this.members.remove(person);
     }
 
-//TODO: updateMember(Person person)
+    public void updateMemberName(Person memberToUpdate, String name) {
+        Person matchingPerson = this.getMembers()
+                .stream()
+                .filter(person -> person.getName().equals(memberToUpdate.getName()))
+                .findAny()
+                .orElse(null);
+        assert matchingPerson != null;
+        matchingPerson.setName(name);
+    }
 
     public List<Person> getMembers() {
         return members;
