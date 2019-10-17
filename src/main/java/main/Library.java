@@ -23,7 +23,10 @@ public class Library {
         }
     }
 
-//TODO: updateItem(Item item)
+    public void updateItem(Item itemToReplace, Item updatedItem) {
+        this.items.remove(itemToReplace);
+        this.items.add(updatedItem);
+    }
 
     public List<Item> getItems() {
         return items;
@@ -47,13 +50,19 @@ public class Library {
 
     public void deleteMember(Person person) {
         this.members.remove(person);
-
     }
 
-//TODO: updateMember(Person person)
+    public void updateMemberName(Person memberToUpdate, String name) {
+        Person matchingPerson = this.getMembers()
+                .stream()
+                .filter(person -> person.getName().equals(memberToUpdate.getName()))
+                .findAny()
+                .orElse(null);
+        assert matchingPerson != null;
+        matchingPerson.setName(name);
+    }
 
     public List<Person> getMembers() {
         return members;
     }
-
 }
