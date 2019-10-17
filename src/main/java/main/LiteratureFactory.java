@@ -22,6 +22,4 @@ public class LiteratureFactory {
         }
         return null;
     }
-
-
 }

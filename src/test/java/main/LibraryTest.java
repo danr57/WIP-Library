@@ -115,6 +115,4 @@ public class LibraryTest {
         lib.addItem(new Magazine());
         lib.addItem(new Magazine());
     }
-
-
 }
