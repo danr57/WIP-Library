@@ -102,7 +102,7 @@ public class LibraryTest {
     }
 
     @Test
-    public void testUpdateMember() {
+    public void testUpdateMemberName() {
         populateMembers();
         Person matchingPerson = lib.getMembers()
                 .stream()
