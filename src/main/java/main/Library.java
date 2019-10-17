@@ -23,8 +23,10 @@ public class Library {
         }
     }
 
-//TODO: updateItem(Item item)
-    /////
+    public void updateItem(Item itemToReplace, Item updatedItem) {
+        this.items.remove(itemToReplace);
+        this.items.add(updatedItem);
+    }
 
     public List<Item> getItems() {
         return items;
@@ -48,7 +50,6 @@ public class Library {
 
     public void deleteMember(Person person) {
         this.members.remove(person);
-
     }
 
 //TODO: updateMember(Person person)

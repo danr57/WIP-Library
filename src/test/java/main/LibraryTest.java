@@ -45,7 +45,19 @@ public class LibraryTest {
 
     @Test
     public void testUpdateItem() {
-//TODO: add functionality to update items
+        Item book1 = new Book("Andy McNab", "Penguin", 368, "2423");
+        Item book2 = new Book("Andy McNob", "Penguin", 368, "2424");
+        lib.addItem(book1);
+        lib.updateItem(book1, book2);
+        boolean bool = false;
+        for (Item item : lib.getItems()) {
+            if (item.itemID.equals("2424")) {
+                bool = true;
+                break;
+            }
+        }
+        assertEquals("The old item is not being removed", 1, lib.getItems().size());
+        assertTrue("The item's value is not being updated", bool);
     }
 
     @Test
