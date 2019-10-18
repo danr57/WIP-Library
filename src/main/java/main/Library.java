@@ -2,6 +2,7 @@ package main;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 public class Library {
@@ -30,12 +31,11 @@ public class Library {
         this.items.add(updatedItem);
     }
 
-    public Item findByUUID(String uuid) {
+    public Optional<Item> findByUUID(String uuid) {
         return getItems()
                 .stream()
                 .filter(i -> i.itemID.equals(uuid))
-                .findAny()
-                .orElse(null);
+                .findAny();
     }
 
     public List<Item> getItems() {
